@@ -17,7 +17,7 @@ def load_contacts(filename="contacts.txt"):
                 if "," in line:
 
                     name, phone = line.split(",", 1)
-                    contacts[name] = phone
+                    contacts[name.strip()] = phone.strip()
     except FileNotFoundError:
         return contacts
     return contacts
