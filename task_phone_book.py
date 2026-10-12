@@ -7,6 +7,7 @@
 
 # Починаємо зі створення функції для завантаження даних з файлу
 def load_contacts(filename="contacts.txt"):
+    """функція для завантаження даних з файлу"""
     contacts = {}
     try:
          with open(filename, "r", encoding="utf-8") as file:
@@ -24,12 +25,14 @@ def load_contacts(filename="contacts.txt"):
 
 # Збереження контактів під час виходу
 def save_contacts(contacts, filename="contacts.txt"):
+    """функція для збереження контактів під час виходу"""
     with open(filename, "w", encoding="utf-8") as file:
         for name, phone in contacts.items():
             file.write(f"{name},{phone}\n")
 
 # Додавання контакту
 def add_contacts(contacts):
+    """функція додавання нового контакту"""
     while True:
         name = input("Введіть імʼя: ").strip()
         if name:
@@ -45,6 +48,7 @@ def add_contacts(contacts):
 
 # Пошук контакту
 def find_contact(contacts):
+    """функція пошуку контакту"""
     wanted = input("Введіть ім'я для пошуку: ").strip().lower()
     found = False
     for name, phone in contacts.items():
@@ -56,6 +60,7 @@ def find_contact(contacts):
 
 # Видалення контакту
 def delete_contact(contacts):
+    """функція видалення контакту"""
     delete_name = input("Введіть ім'я для видалення: ").strip()
     delete_key = None
     for name in contacts:
@@ -70,6 +75,7 @@ def delete_contact(contacts):
 
 # Показ усіх контактів
 def show_all_contacts(contacts):
+    """функція показу всіх контактів"""
     if not contacts:
         print(f"Телефонна книга порожня")
         return
@@ -80,6 +86,7 @@ def show_all_contacts(contacts):
 
 # Додаєм функцію редагування вже існуючого контакту
 def edit_contact(contacts):
+    """функція редагування існуючого контакту"""
     name = input("Введіть ім'я контакту для зміни номера: ").strip()
     key_to_edit = None
     for k in contacts:
@@ -95,6 +102,7 @@ def edit_contact(contacts):
 
 # Головне меню
 def main():
+    """головне меню"""
     contacts = load_contacts()
     try:
         while True:
