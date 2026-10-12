@@ -78,6 +78,21 @@ def show_all_contacts(contacts):
         print(f"{name} - {phone}")
     print("--------------------------------")
 
+# Додаєм функцію редагування вже існуючого контакту
+def edit_contact(contacts):
+    name = input("Введіть ім'я контакту для зміни номера: ").strip()
+    key_to_edit = None
+    for k in contacts:
+        if k.lower() == name.lower():
+            key_to_edit = k
+            break
+    if key_to_edit:
+        new_phone = input(f"Введіть новий номер для '{key_to_edit}': ").strip()
+        contacts[key_to_edit] = new_phone
+        print(f"Номер для '{key_to_edit}' успішно оновлено.")
+    else:
+        print(f"Контакт '{name}' не знайдено.")
+
 # Головне меню
 def main():
     contacts = load_contacts()
@@ -88,9 +103,10 @@ def main():
             print("2. Знайти контакт")
             print("3. Видалити контакт")
             print("4. Показати всі контакти")
-            print("5. Вийти")
+            print("5. Редагувати контакт")
+            print("6. Вийти")
 
-            choice = input("Обери дію (1 - 5): ").strip()
+            choice = input("Обери дію (1 - 6): ").strip()
 
             if choice == "1":
                 add_contacts(contacts)
@@ -101,6 +117,8 @@ def main():
             elif choice == "4":
                 show_all_contacts(contacts)
             elif choice == "5":
+                edit_contact(contacts)
+            elif choice == "6":
                 print("Завершення роботи")
                 break
             else:
