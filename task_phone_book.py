@@ -58,6 +58,18 @@ def find_contact(contacts):
     if not found:
         print(f"Контакт за імʼям '{wanted}' не знайдено.")
 
+# НОВА ФУНКЦІЯ: Пошук контакту за номером телефону
+def find_contact_by_phone(contacts):
+    """функція пошуку контакту за номером телефону"""
+    wanted_phone = input("Введіть номер телефону (або його частину) для пошуку: ").strip()
+    found = False
+    for name, phone in contacts.items():
+        if wanted_phone in phone:
+            print(f"Знайдено: {name} — {phone}")
+            found = True
+    if not found:
+        print(f"Контакт з номером '{wanted_phone}' не знайдено.")
+
 # Видалення контакту
 def delete_contact(contacts):
     """функція видалення контакту"""
@@ -109,24 +121,27 @@ def main():
             print("\n=== МЕНЮ ===")
             print("1. Додати контакт")
             print("2. Знайти контакт")
-            print("3. Видалити контакт")
-            print("4. Показати всі контакти")
-            print("5. Редагувати контакт")
-            print("6. Вийти")
+            print("3. Знайти контакт за номером")
+            print("4. Видалити контакт")
+            print("5. Показати всі контакти")
+            print("6. Редагувати контакт")
+            print("7. Вийти")
 
-            choice = input("Обери дію (1 - 6): ").strip()
+            choice = input("Обери дію (1 - 7): ").strip()
 
             if choice == "1":
                 add_contacts(contacts)
             elif choice == "2":
                 find_contact(contacts)
             elif choice == "3":
-                delete_contact(contacts)
+                find_contact_by_phone(contacts)
             elif choice == "4":
-                show_all_contacts(contacts)
+                delete_contact(contacts)
             elif choice == "5":
-                edit_contact(contacts)
+                show_all_contacts(contacts)
             elif choice == "6":
+                edit_contact(contacts)
+            elif choice == "7":
                 print("Завершення роботи")
                 break
             else:
