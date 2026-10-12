@@ -41,7 +41,7 @@ def add_contacts(contacts):
             break
         print("Номер не може бути порожнім. Введіть номер.")
     contacts[name] = phone
-    print(f"Контакт {name} успішно додано.")
+    print(f"Контакт '{name}' успішно додано.")
 
 # Пошук контакту
 def find_contact(contacts):
@@ -52,7 +52,7 @@ def find_contact(contacts):
             print(f"Знайдено: {name} — {phone}")
             found = True
     if not found:
-        print(f"Контакт за імʼям {wanted} не знайдено.")
+        print(f"Контакт за імʼям '{wanted}' не знайдено.")
 
 # Видалення контакту
 def delete_contact(contacts):
@@ -64,9 +64,9 @@ def delete_contact(contacts):
             break
     if delete_key:
         del contacts[delete_key]
-        print(f"Контакт {delete_key} успішно видалено")
+        print(f"Контакт '{delete_key}' успішно видалено")
     else:
-        print(f"Контакт {delete_name} не знайдено")
+        print(f"Контакт '{delete_name}' не знайдено")
 
 # Показ усіх контактів
 def show_all_contacts(contacts):
